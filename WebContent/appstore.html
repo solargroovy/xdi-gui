@@ -49,6 +49,7 @@
               <li id="navReg"><a href="#!/register">Register</a></li>
 			  <li id="navDef"><a href="#!/definitions">Add Definitions</a></li>
  			  <li id="navAdd"><a href="#!/add">Add Data</a></li>
+ 			  <li id="navMod"><a href="#!/mod">Edit Data</a></li>
               <li id="navReset"><a href="#!/reset">Reset XDI</a></li>
             </ul>
           </div><!--/.nav-collapse -->
@@ -58,8 +59,8 @@
 
     <div class="container-fluid">
 
-			<div id="modalSpinner" class="modal">
-				<div class="modal-body"><img src="img/spinner.gif"></div>
+			<div id="modalSpinner" class="modal" style="width:65px">
+				<div  class="modal-body"><img src="img/spinner.gif" style="width:35px"></div>
 			</div>
       <div class="row-fluid">
         <div class="span3">
@@ -186,57 +187,9 @@
 		
 					<!-- View: Edit
 					============================================ -->
-  				<section id="viewEdit" class="viewPanel" style="display:none;">
+  		<section id="viewEdit" class="viewPanel" style="display:none;">
 
-            <form id="formEdit" class="form-horizontal">
-							<input type="hidden" id="appRID" name="appRID" value="">
-              <fieldset>
-								<legend>Edit Application</legend>
-								<div id="alertEdit" class="alert alert-success" style="display:none;">
-									<a class="close" data-dismiss="alert">&times;</a>
-									<strong>Success!</strong> Your application updates have been saved.
-								</div>
-                <div class="control-group">
-                  <label class="control-label" for="appRIDshow">RID</label>
-                  <div class="controls">
-                    <input type="text" id="appRIDshow" name="appRIDshow" class="disabled" disabled>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="appName">Name</label>
-                  <div class="controls">
-                    <input type="text" id="appName" name="appName">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="appType">Type</label>
-                  <div class="controls">
-										<select name="appType">
-											<option value="application">application</option>
-											<option value="service">service</option>
-										</select>
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="appIcon">Icon</label>
-                  <div class="controls">
-                    <input type="text" id="appIcon" name="appIcon">
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="appSummary">Summary</label>
-                  <div class="controls">
-										<textarea id="appSummary" name="appSummary" rows="3"></textarea>
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
-									<a id="btnDelete" class="btn btn-danger" href="#!/">Delete</a>
-                </div>
-              </fieldset>
-            </form>
-
-					</section> <!-- #viewEdit -->
+		</section> <!-- #viewEdit -->
 
 					<!-- View: Register
 					============================================ -->
@@ -327,8 +280,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Kynetx Sitetag, load and run -->
-		<script>KOBJ_config= {'init':{'eval_host':'127.0.0.1','callback_host':'127.0.0.1','init_host':'127.0.0.1'},"a144x148:kynetx_app_version":"dev","rids":["a144x148"]};</script>
-		<script src="http://127.0.0.1/js/shared/kobj-static.js"></script>
+	<!--	<script>KOBJ_config= {'init':{'eval_host':'127.0.0.1','callback_host':'127.0.0.1','init_host':'127.0.0.1'},"a144x148:kynetx_app_version":"dev","rids":["a144x148"]};</script>
+	<!--	<script src="http://127.0.0.1/js/shared/kobj-static.js"></script>-->-->
+		<script>KOBJ_config= {"a144x148:kynetx_app_version":"prod","rids":["a144x148"]};</script>
+		<script src="http://init.kobj.net/js/shared/kobj-static.js"></script>
 
   </body>
 </html>
