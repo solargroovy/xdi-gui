@@ -46,7 +46,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li id="navHome" class="active"><a href="#!/">Home</a></li>
-              <li id="navReg"><a href="#!/register">Register</a></li>
+              <li id="navPref"><a href="#!/prefs">Preferences</a></li>
 			  <li id="navDef"><a href="#!/definitions">Add Definitions</a></li>
  			  <li id="navAdd"><a href="#!/add">Add Data</a></li>
  			  <li id="navMod"><a href="#!/mod">Edit Data</a></li>
@@ -59,7 +59,7 @@
 
     <div class="container-fluid">
 
-			<div id="modalSpinner" class="modal" style="width:65px">
+			<div id="modalSpinner" class="modal hide" style="width:65px;">
 				<div  class="modal-body"><img src="img/spinner.gif" style="width:35px"></div>
 			</div>
       <div class="row-fluid">
@@ -86,13 +86,48 @@
 					============================================ -->
   				<section id="viewHome" class="viewPanel" style="display:block;">
 
-						<div class="hero-unit">
+						<!-- <div class="hero-unit">
 							<h1>Kynetx</h1>
 							<p>XDI personal cloud Administration</p>
-						</div><!--/.hero-unit-->
+						</div> -->
+						
+						<div id="formHandle"></div>
+						
 					
 				</section> <!-- #viewHome -->
 				
+				<!-- View: Preferences
+					============================================ -->
+  	<section id="viewPref" class="viewPanel" style="display:none;">
+		<div id="formPref"></div>
+  		<form id="formPrefs" class="form-horizontal">
+          <fieldset>
+			<legend>Account Preferences</legend>
+			<div class="control-group">
+               <div class="controls">   
+               	<label class="checkbox">
+               		<input type="checkbox" id="useKynetx" name="huse" checked value="foo" autocomplete="off">
+               		Use Kynetx as XDI repository
+               		<input type="hidden" id="xlocalAccount" name="xlocalAccount" value="1">
+               	</label>              
+               </div>
+             </div>
+             <div class="control-group">
+               <label class="control-label" for="xdiINAME">iName</label>
+               <div class="controls">
+                 <div class="input-append">
+                 <input type="text" id="xdiINAME" name="xdiINAME" placeholder="=tester">
+                 <button class="btn btn-info btn-mini" type="button" id="xdiLOOKUP">Lookup</button>
+               	</div>
+               </div>
+             </div>
+             <div class="form-actions">
+               <button type="submit" class="btn btn-primary" id="regXDIAction" data-loading-text="loading text">Register</button>
+             </div>
+          	</fieldset>
+        </form>
+  				
+	</section> <!-- #viewPref -->
 					
 					<!-- View: No Account
 					============================================ -->
@@ -174,79 +209,6 @@
 
 		</section> <!-- #viewEdit -->
 
-					<!-- View: Register
-					============================================ -->
-  				<section id="viewReg" class="viewPanel" style="display:none;">
-            <form id="formReg" class="form-horizontal">
-              <fieldset>
-						<legend>Register your XDI account with Kynetx</legend>
-						<div id="alertReg" class="alert " style="display:none;">
-							<a class="close" data-dismiss="alert">&times;</a>
-							<strong>Success!</strong> Your XDI personal data store has been registered.
-						</div>
-						<div id="alertLookup" class="alert alert-error" style="display:none;">
-							<a class="close" data-dismiss="alert">&times;</a>
-							<strong>fail!</strong> Please provide an iName to query
-						</div>
-						<div id="alertNotFound" class="alert alert-error" style="display:none;">
-							<a class="close" data-dismiss="alert">&times;</a>
-							<strong>fail!</strong> <span id="lookupFailIname"></span>
-						</div>
-						<div id="alertAvailable" class="alert " style="display:none;">
-							<a class="close" data-dismiss="alert">&times;</a>
-							<strong>Success!</strong> <span id="localNotFound"></span>
-						</div>
-						
-                <div class="control-group">
-                  <div class="controls">   
-                  	<label class="checkbox">
-                  		<input type="checkbox" id="useKynetx" name="huse" checked value="foo" autocomplete="off">
-                  		Use Kynetx as XDI repository
-                  		<input type="hidden" id="xlocalAccount" name="xlocalAccount" value="1">
-                  	</label>              
-                  </div>
-                </div>
-                <div class="control-group">
-                  <label class="control-label" for="xdiINAME">iName</label>
-                  <div class="controls">
-                    <div class="input-append">
-                    <input type="text" id="xdiINAME" name="xdiINAME" placeholder="=tester">
-                    <button class="btn btn-info btn-mini" type="button" id="xdiLOOKUP">Lookup</button>
-                  	</div>
-                  </div>
-                </div>
-                <div class="control-group" id="rowInumber" style="display:none">
-                  <label class="control-label" for="xdiINUMBER">iNumber</label>
-                  <div class="controls">
-                    <input type="text" id="xdiINUMBER" name="xdiINUMBER" autocomplete="off">
-                  </div>
-                </div>
-                <div class="control-group" style="display:none" id=rowEndpoint>
-                  <label class="control-label" for="xdiENDPOINT" >Endpoint</label>
-                  <div class="controls">
-	                  <div class="input-append">
-	                    <input type="text" id="xdiENDPOINT" name="xdiENDPOINT" autocomplete="off">
-	                  </div>
-                  </div>
-                </div>
-                <div class="control-group" id="secretMatch">
-                  <label class="control-label" for="xdiSecret">Secret</label>
-                  <div class="controls">
-                    <input type="password" id="xdiSecret" name="xdiSecret"><span class="help-inline">Passwords must match</span>
-                  </div>
-                </div>
-                <div class="control-group" id="newACCOUNT">
-                  <label class="control-label" for="xdiSecret2">Confirm Secret</label>
-                  <div class="controls">
-                    <input type="password" id="xdiSecret2" name="xdiSecret2">
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button type="submit" class="btn btn-primary" id="regXDIAction" data-loading-text="loading text">Register</button>
-                </div>
-              </fieldset>
-            </form>
-					</section> <!-- #viewDelete -->
 
         </div><!--/span-->
       </div><!--/row-->
@@ -262,7 +224,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Kynetx Sitetag, load and run -->
-	<script>KOBJ_config= {'init':{'eval_host':'127.0.0.1','callback_host':'127.0.0.1','init_host':'127.0.0.1'},"a144x148:kynetx_app_version":"dev","rids":["a144x148"]};</script> 
+	<script>KOBJ_config= {'init':{'eval_host':'127.0.0.1','callback_host':'127.0.0.1','init_host':'127.0.0.1'},"a144x150:kynetx_app_version":"dev","rids":["a144x150"]};</script> 
 	<script src="http://127.0.0.1/js/shared/kobj-static.js"></script>
 	<!--	<script>KOBJ_config= {"a144x148:kynetx_app_version":"prod","rids":["a144x148"]};</script> -->
 	<!--	<script src="https://init.kobj.net/js/shared/kobj-static.js"></script> -->
